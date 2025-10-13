@@ -122,7 +122,7 @@
 [LibraryClasses.IA32, LibraryClasses.X64, LibraryClasses.AARCH64]
   RngLib|MdePkg/Library/BaseRngLib/BaseRngLib.inf
 
-[LibraryClasses.ARM, LibraryClasses.AARCH64]
+[LibraryClasses.AARCH64]
   ArmLib|ArmPkg/Library/ArmLib/ArmBaseLib.inf
 
 [LibraryClasses.common.SEC]
@@ -318,7 +318,7 @@
 # available services.
 #
 !if $(CRYPTO_SERVICES) == TARGET_UNIT_TESTS
-[Components.IA32, Components.X64, Components.ARM, Components.AARCH64]
+[Components.IA32, Components.X64, Components.AARCH64]
   #
   # Target based unit tests
   #
@@ -327,11 +327,6 @@
       OpensslLib|CryptoPkg/Library/OpensslLib/OpensslLibFull.inf
       BaseCryptLib|CryptoPkg/Library/BaseCryptLib/BaseCryptLib.inf
       TlsLib|CryptoPkg/Library/TlsLib/TlsLib.inf
-    <BuildOptions>
-      MSFT:*_*_*_DLINK_FLAGS     = /ALIGN:4096 /FILEALIGN:4096 /SUBSYSTEM:CONSOLE
-      MSFT:DEBUG_*_*_DLINK_FLAGS = /EXPORT:InitializeDriver=$(IMAGE_ENTRY_POINT) /BASE:0x10000
-      MSFT:DEBUG_*_*_DLINK_FLAGS = /EXPORT:InitializeDriver=$(IMAGE_ENTRY_POINT) /BASE:0x10000
-      MSFT:NOOPT_*_*_DLINK_FLAGS = /EXPORT:InitializeDriver=$(IMAGE_ENTRY_POINT) /BASE:0x10000
   }
 
 [Components.IA32, Components.X64, Components.AARCH64]
@@ -343,10 +338,7 @@
       BaseCryptLib|CryptoPkg/Library/BaseCryptLib/BaseCryptLib.inf
       TlsLib|CryptoPkg/Library/TlsLib/TlsLib.inf
     <BuildOptions>
-      MSFT:*_*_*_DLINK_FLAGS     = /ALIGN:4096 /FILEALIGN:4096 /SUBSYSTEM:CONSOLE
-      MSFT:DEBUG_*_*_DLINK_FLAGS = /EXPORT:InitializeDriver=$(IMAGE_ENTRY_POINT) /BASE:0x10000
-      MSFT:DEBUG_*_*_DLINK_FLAGS = /EXPORT:InitializeDriver=$(IMAGE_ENTRY_POINT) /BASE:0x10000
-      MSFT:NOOPT_*_*_DLINK_FLAGS = /EXPORT:InitializeDriver=$(IMAGE_ENTRY_POINT) /BASE:0x10000
+      MSFT:*_*_*_DLINK_FLAGS     = /ALIGN:4096
   }
 
 [Components.RISCV64]
@@ -437,7 +429,7 @@
     <LibraryClasses>
       OpensslLib|CryptoPkg/Library/OpensslLib/OpensslLib.inf
   }
-[Components.IA32, Components.X64, Components.ARM, Components.AARCH64]
+[Components.IA32, Components.X64, Components.AARCH64]
   #
   # CryptoPei with OpensslLib instance with all services
   #
@@ -508,7 +500,7 @@
     <LibraryClasses>
       OpensslLib|CryptoPkg/Library/OpensslLib/OpensslLib.inf
   }
-[Components.IA32, Components.X64, Components.ARM, Components.AARCH64]
+[Components.IA32, Components.X64, Components.AARCH64]
   #
   # CryptoDxe with OpensslLib instance with all services
   #
